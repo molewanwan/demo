@@ -1,0 +1,269 @@
+# git的安装
+[root@ip-172-31-22-8 ~]# yum install git
+[root@ip-172-31-22-8 ~]# git config --global user.name "molewan"
+[root@ip-172-31-22-8 ~]# git config --global user.email "314324506@qq.com"
+[root@ip-172-31-22-8 ~]# git config --list
+user.name=molewan
+user.email=314324506@qq.com
+
+# 为git配置颜色
+[root@ip-172-31-22-8 ~]# git config --global color.ui true
+[root@ip-172-31-22-8 ~]# git config --list
+user.name=molewan
+user.email=314324506@qq.com
+color.ui=true
+
+# 本地创建一个git
+[root@ip-172-31-22-8 ~]# mkdir molewan
+[root@ip-172-31-22-8 ~]# cd molewan
+[root@ip-172-31-22-8 molewan]# ll
+total 0
+[root@ip-172-31-22-8 molewan]# git init
+Initialized empty Git repository in /root/molewan/.git/
+[root@ip-172-31-22-8 molewan]# ls -la
+total 8
+drwxr-xr-x.  3 root root   17 Nov 26 17:04 .
+dr-xr-x---. 12 root root 4096 Nov 26 17:04 ..
+drwxr-xr-x.  7 root root 4096 Nov 26 17:04 .git
+
+[root@ip-172-31-22-8 molewan]# vim readme.txt
+You have new mail in /var/spool/mail/root
+[root@ip-172-31-22-8 molewan]# cat readme.txt 
+hehe
+[root@ip-172-31-22-8 molewan]# git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	readme.txt
+nothing added to commit but untracked files present (use "git add" to track)
+# 添加新文件，readme.txt
+[root@ip-172-31-22-8 molewan]# git add readme.txt 
+[root@ip-172-31-22-8 molewan]# git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#	new file:   readme.txt
+#
+[root@ip-172-31-22-8 molewan]# git commit -m "the first commity"
+[master (root-commit) 24a5b30] the first commity
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+You have new mail in /var/spool/mail/root
+[root@ip-172-31-22-8 molewan]# git status
+# On branch master
+nothing to commit, working directory clean
+[root@ip-172-31-22-8 molewan]# vim deply.sh
+You have new mail in /var/spool/mail/root
+[root@ip-172-31-22-8 molewan]# git status
+# On branch master
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	deply.sh
+nothing added to commit but untracked files present (use "git add" to track)
+[root@ip-172-31-22-8 molewan]# git add deply.sh 
+[root@ip-172-31-22-8 molewan]# git commit -m "2th commit"
+[master f30d737] 2th commit
+ 1 file changed, 2 insertions(+)
+ create mode 100644 deply.sh
+[root@ip-172-31-22-8 molewan]# git status
+# On branch master
+nothing to commit, working directory clean
+[root@ip-172-31-22-8 molewan]# ls -l
+total 8
+-rw-r--r--. 1 root root 22 Nov 26 17:15 deply.sh
+-rw-r--r--. 1 root root  5 Nov 26 17:07 readme.txt
+
+# 使用git log进行查看
+[root@ip-172-31-22-8 molewan]# git log
+commit f30d737d24b2c04f8ce70a8c88b0071bdcc069c8
+Author: molewan <314324506@qq.com>
+Date:   Sat Nov 26 17:16:27 2016 -0500
+
+    2th commit
+
+commit 24a5b3094f55e815ad46561f4b741c23bc7ad371
+Author: molewan <314324506@qq.com>
+Date:   Sat Nov 26 17:13:37 2016 -0500
+
+    the first commity
+
+[root@ip-172-31-22-8 molewan]# vim readme.txt 
+# 添加一行文字，hehe
+[root@ip-172-31-22-8 molewan]# cat readme.txt 
+hehe
+hehe
+[root@ip-172-31-22-8 molewan]# git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   readme.txt
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+# 使用git diff进行对比
+[root@ip-172-31-22-8 molewan]# git diff readme.txt 
+diff --git a/readme.txt b/readme.txt
+index 91ca0fa..197cac2 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -1 +1,2 @@
+ hehe
++hehe
+
+[root@ip-172-31-22-8 molewan]# git add readme.txt 
+[root@ip-172-31-22-8 molewan]# git commit -m "add 2hehe"
+[master c33cc4f] add 2hehe
+ 1 file changed, 1 insertion(+)
+[root@ip-172-31-22-8 molewan]# git log
+commit c33cc4f3c6a1dc6741bce035de920f5a17c82b4b
+Author: molewan <314324506@qq.com>
+Date:   Sat Nov 26 17:22:05 2016 -0500
+
+    add 2hehe
+
+commit f30d737d24b2c04f8ce70a8c88b0071bdcc069c8
+Author: molewan <314324506@qq.com>
+Date:   Sat Nov 26 17:16:27 2016 -0500
+
+    2th commit
+
+commit 24a5b3094f55e815ad46561f4b741c23bc7ad371
+:...skipping...
+commit c33cc4f3c6a1dc6741bce035de920f5a17c82b4b
+Author: molewan <314324506@qq.com>
+Date:   Sat Nov 26 17:22:05 2016 -0500
+
+    add 2hehe
+
+commit f30d737d24b2c04f8ce70a8c88b0071bdcc069c8
+Author: molewan <314324506@qq.com>
+Date:   Sat Nov 26 17:16:27 2016 -0500
+
+    2th commit
+
+commit 24a5b3094f55e815ad46561f4b741c23bc7ad371
+Author: molewan <314324506@qq.com>
+Date:   Sat Nov 26 17:13:37 2016 -0500
+
+    the first commity
+
+# 版本回退
+[root@ip-172-31-22-8 molewan]# git reset --hard HEAD^
+HEAD is now at f30d737 2th commit
+[root@ip-172-31-22-8 molewan]# cat readme.txt 
+hehe
+# 说明：HEAD^代表上一个版本，^^代表上上个版本
+[root@ip-172-31-22-8 molewan]# git log
+commit f30d737d24b2c04f8ce70a8c88b0071bdcc069c8
+Author: molewan <314324506@qq.com>
+Date:   Sat Nov 26 17:16:27 2016 -0500
+
+    2th commit
+
+commit 24a5b3094f55e815ad46561f4b741c23bc7ad371
+Author: molewan <314324506@qq.com>
+Date:   Sat Nov 26 17:13:37 2016 -0500
+
+    the first commity
+# 回退到指定的版本
+[root@ip-172-31-22-8 molewan]# git reflog
+f30d737 HEAD@{0}: reset: moving to HEAD^
+c33cc4f HEAD@{1}: commit: add 2hehe
+f30d737 HEAD@{2}: commit: 2th commit
+24a5b30 HEAD@{3}: commit (initial): the first commity
+[root@ip-172-31-22-8 molewan]# git reset --hard 24a5b30
+HEAD is now at 24a5b30 the first commity
+[root@ip-172-31-22-8 molewan]# ls -l
+total 4
+-rw-r--r--. 1 root root 5 Nov 26 17:25 readme.txt
+
+工作区与暂存区：
+[root@ip-172-31-22-8 molewan]# git status
+# On branch master
+nothing to commit, working directory clean
+
+需要先add，才能comit
+
+# git checkout
+[root@ip-172-31-22-8 molewan]# vim readme.txt 
+[root@ip-172-31-22-8 molewan]# cat readme.txt 
+hehe
+add commit sense
+3:just for test
+[root@ip-172-31-22-8 molewan]# git checkout -- readme.txt 
+[root@ip-172-31-22-8 molewan]# cat readme.txt 
+hehe
+add commit sense
+
+
+git hub账号：
+molewanwan
+314324506@qq.com
+qin_wen_2015
+
+
+[root@ip-172-31-22-8 molewanwan]# git remote add origin git@github.com:molewanwan/demo.git
+fatal: Not a git repository (or any of the parent directories): .git
+[root@ip-172-31-22-8 molewanwan]# git init
+Initialized empty Git repository in /home/molewanwan/.git/
+[root@ip-172-31-22-8 molewanwan]# git remote add origin git@github.com:molewanwan/demo.git
+[root@ip-172-31-22-8 molewanwan]# ls -la
+total 20
+drwx------.   3 molewanwan molewanwan   70 Nov 27 07:55 .
+drwxr-xr-x. 104 root       root       4096 Nov 27 07:43 ..
+-rw-r--r--.   1 molewanwan molewanwan   18 Jul  8  2015 .bash_logout
+-rw-r--r--.   1 molewanwan molewanwan  193 Jul  8  2015 .bash_profile
+-rw-r--r--.   1 molewanwan molewanwan  231 Jul  8  2015 .bashrc
+drwxr-xr-x.   7 root       root       4096 Nov 27 07:56 .git
+[root@ip-172-31-22-8 .git]# ls -la
+total 20
+drwxr-xr-x. 7 root       root       4096 Nov 27 07:56 .
+drwx------. 3 molewanwan molewanwan   70 Nov 27 07:55 ..
+drwxr-xr-x. 2 root       root          6 Nov 27 07:55 branches
+-rw-r--r--. 1 root       root        197 Nov 27 07:56 config
+-rw-r--r--. 1 root       root         73 Nov 27 07:55 description
+-rw-r--r--. 1 root       root         23 Nov 27 07:55 HEAD
+drwxr-xr-x. 2 root       root       4096 Nov 27 07:55 hooks
+drwxr-xr-x. 2 root       root         20 Nov 27 07:55 info
+drwxr-xr-x. 4 root       root         28 Nov 27 07:55 objects
+drwxr-xr-x. 4 root       root         29 Nov 27 07:55 refs
+[root@ip-172-31-22-8 .git]# cat config 
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = git@github.com:molewanwan/demo.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+
+[root@ip-172-31-22-8 molewanwan]# git pull
+The authenticity of host 'github.com (192.30.253.113)' can't be established.
+RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+From github.com:molewanwan/demo
+ * [new branch]      master     -> origin/master
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> master
