@@ -1,0 +1,91 @@
+﻿
+IDC托管：
+	1）熟悉各大IDC厂商
+	2）根据业务类型选择
+	3）网络测试
+	4）谈价格、走合同
+	5）设备采购（需要分析、采购、设备上下架）
+
+
+设备上下架：
+	网络的配置--标签--自检（对设备的型号和配置进行检查）--RAID--iDrac\ILO\IMM--操作系统安装--资产录入（分层设计）--合同管理（采购方-采购时间-采购人-联系信息...保修时间-地点-配置详情)。CMDB（配置项-操作系统类型-IP（IPV4,RIP,VIP,IPMI,主机名）、服务层面。
+
+
+环境初始化：
+	1）性能优化
+	2）监控Agent
+	3）自动化管理SaltStack Minion
+	4）DNS
+	5）limit
+	6）rsyslog
+	7）logstash
+	8）审计
+	
+
+服务层-数据层-DB：
+	1）MySQL
+	2) Oracle
+	3) PG SQL
+	4) SqlServer
+	5）Access
+
+服务层-数据层-NoSQL：
+	1）Mongodb
+	2）Redis
+	3）Couchbase
+	4）ElasticSearch
+
+服务层-数据层-分布式缓存：
+	1）Memcached
+	2) Redis
+
+服务层-DAL（专业的团队才能做）
+	1）淘宝的TDDL
+	2) 360的
+	3）aili的
+
+服务层-分布式层
+   分布式存储：
+	1）GlusterFS
+	2) MooseFS
+	3) FastDFS
+
+   分布式消息队列：
+	1）RabbitMQ
+	2）MQ
+	3) QPID
+	4) ZeroMQ
+
+服务层-SOA层-服务化：
+	1）应用服务层（Dubbo（Java）RPC ）
+	2）restful
+
+服务层-Web层：
+	1）Apache
+	2）Nginx
+	3）Tomcat
+	4）Jboss
+	5）Resin
+
+服务层-反向代理缓存：
+	1）ATS
+	2) Squid
+	3）Varnish
+	配置同步;流量统计;预缓存;缓存更新;日志(分析);DNS
+
+服务层-应用层-应用变更
+	PHP Python Java C C++
+负载均衡-负载均衡层:
+	四层：
+		LVS
+		F5
+		Netscaler
+		A10
+
+	七层：
+		haproxy
+		nginx
+
+两个点：
+	运维的边界
+	找准重点
